@@ -15,6 +15,7 @@ body {
 <template>
   <div id="app">
     <div class="container">
+      <AddTodo />
       <Todos />
     </div>
   </div>
