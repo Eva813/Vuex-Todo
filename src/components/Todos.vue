@@ -6,7 +6,7 @@
   grid-gap: 1rem;
 }
 .todo {
-  border: 1px solid #ccc;
+  border: 1px solid #fff;
   background: #ef9a9a;
   padding: 1rem;
   border-radius: 5px;
@@ -14,12 +14,24 @@
   position: relative;
   cursor: pointer;
 }
+
+i {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #fff;
+  cursor: pointer;
+  &:hover {
+    color: #ca4f4f;
+  }
+}
 </style>
 <template>
   <h3>Todos</h3>
   <div class="todos">
     <div class="todo" v-for="todo in getTodos" :key="todo.id">
       {{ todo.title }}
+      <i class="fas fa-trash-alt"></i>
     </div>
   </div>
 </template>
