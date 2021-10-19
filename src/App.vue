@@ -2,7 +2,7 @@
 body {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   line-height: 1.6;
-  background: #e8f7f0;
+  background: #fff4d3;
 }
 .container {
   max-width: 1100px;
@@ -25,11 +25,13 @@ body {
 <script>
 // @ is an alias to /src
 import Todos from "@/components/Todos.vue";
+import AddTodo from "@/components/AddTodo.vue";
 
 export default {
   name: "app",
   components: {
     Todos,
+    AddTodo,
   },
 };
 </script>
