@@ -1,30 +1,35 @@
-<template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
-</template>
-
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  line-height: 1.6;
+  background: #e8f7f0;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.container {
+  max-width: 1100px;
+  margin: auto;
+  overflow: auto;
+  padding: 0 2rem;
 }
 </style>
+
+<template>
+  <div id="app">
+    <div class="container">
+      <Todos />
+    </div>
+  </div>
+  <!-- <router-view /> -->
+</template>
+
+
+<script>
+// @ is an alias to /src
+import Todos from "@/components/Todos.vue";
+
+export default {
+  name: "app",
+  components: {
+    Todos,
+  },
+};
+</script>
