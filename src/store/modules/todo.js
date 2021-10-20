@@ -19,7 +19,20 @@ const actions = {
   async deleteTodo({ commit }, id) {
     await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
     commit('removeTodo', id)
-  }
+  },
+  async filterTodos({ commit }, e) {
+    //取得下拉選單的值
+    // console.log(e.target.value);
+    let selected = parseInt(e.target.value);
+    const res = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${selected}`);
+    commit('setTodos', res.data);
+  },
+  async updataTodo({ commit }, updTodo) {
+    const res = await axios.put(`https://jsonplaceholder.typicode.com/todos/${updTodo.id}`,
+      updTodo);
+    //上方 url 後面要加入要傳入的參數資料
+    commit('renewTodo', res.data);
+  },
 
 };
 const mutations = {
@@ -32,6 +45,18 @@ const mutations = {
   removeTodo: (state, id) => {
     state.todos = state.todos.filter((todo) => todo.id !== id);
     //使用filter 將，不是id的篩選出來
+  },
+  // getFilterTodos: (state, selectedTodos) => {
+  //   state.todos = selectedTodos;
+  // }
+  renewTodo: (state, updTodo) => {
+    console.log(updTodo);
+    //我們是要在同一筆資料上更新
+    const index = state.todos.findIndex(todo => todo.id === updTodo.id);
+    //以下簡單確認 indx 是否有存在
+    if (index !== -1) {
+      state.todos.splice(index, 1, updTodo);
+    }
   }
 };
 
